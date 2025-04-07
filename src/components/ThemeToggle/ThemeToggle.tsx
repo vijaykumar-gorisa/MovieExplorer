@@ -26,7 +26,7 @@ const ThemeToggle: React.FC = () => {
         filters.forEach((filter) => {
             (filter as HTMLElement).style.color = darkMode ? "white" : "#333";
         });
-    }, [darkMode])
+    }, [darkMode]);
     return(
 
         <button className="theme-toggle" onClick={() => setDarkMode (!darkMode)}>
