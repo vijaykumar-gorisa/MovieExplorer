@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "./redux/movieSlice";
 import { RootState, AppDispatch } from "./redux/store";
 
 import SearchBar from "./components/SearchBar";
-import SortDropdown from "./components/sortDropdown";
+import SortDropdown from "../src/components/sortDropdown";
 import RatingFilter from "./components/RatingFilter";
 import GenreFilter from "./components/GenreFilter";
 import MovieTrailer from "./components/VideoTrailer";
@@ -23,9 +22,8 @@ const App: React.FC = () => {
   const [sortOption, setSortOption] = useState<string>("");
 
   useEffect(() => {
-    dispatch(fetchMovies());
+    dispatch(fetchMovies("")); // Pass empty string on initial load
   }, [dispatch]);
-
   const filteredMovies = movies
     .filter((movie) => {
       if (ratingFilter && !movie.description.toLowerCase().includes(ratingFilter.toLowerCase())) {
